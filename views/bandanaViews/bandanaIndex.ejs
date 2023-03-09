@@ -1,0 +1,18 @@
+<%-include ('../partials/header.ejs')%>
+
+<div class="container" >
+    <h1>
+        Nova's Bandana's 
+    </h1>
+    <ul>
+    <% bandanas.forEach(bandana => {%>
+        <li>
+            <a><img src="<%=bandana.img%>"></a>
+            <h3> <%= bandana.title%> </h3>
+            <p> Price: $<%=bandana.price%> </p>
+    <% });%>
+        </li>
+    </ul>
+</div>
+
+<%-include('../partials/footer.ejs')%>

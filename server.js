@@ -27,7 +27,9 @@ db.on('disconnected', ()=>console.log(`MongoDb is DISCONNECTED!`))
 //MIDDLEWARE
 app.use('/novascloset', novasClosetController);
     // ^^ gives us access to router ^^
-
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
+    // ^^ gives us access to req.body ^^^
 
 //LISTENER
 const PORT = process.env.PORT
