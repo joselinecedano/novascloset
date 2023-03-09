@@ -30,6 +30,9 @@ app.use('/novascloset', novasClosetController);
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
     // ^^ gives us access to req.body ^^^
+app.use(methodOverride('_method'))
+    // ^^ gives us access to DELETE and _method ^^
+
 
 //LISTENER
 const PORT = process.env.PORT

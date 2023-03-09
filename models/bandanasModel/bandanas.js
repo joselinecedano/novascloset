@@ -6,8 +6,8 @@ const bandanaSchema = new mongoose.Schema({
     title: {type: String, required: true},
     img: {type: String, required: true},
     description: {type: String, required: true},
-    price: {type: Number, required: true},
-    qty: {type: Number, required: true},
+    price: {type: Number, min: 0},
+    qty: {type: Number, min: 0},
 });
 
 const Bandana = mongoose.model('Bandana', bandanaSchema);

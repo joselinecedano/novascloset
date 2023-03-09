@@ -4,7 +4,10 @@ const Bandana = require('../models/bandanasModel/bandanas');
 const router = express.Router();
 
 //ROUTES
-
+//HOME
+router.get('/', (req,res)=>{
+    res.send("Nova's Closet")
+});
 //SEED
 router.get('/seed', (req,res)=>{
     Bandana.create([
@@ -54,13 +57,27 @@ router.get('/bandanas', (req,res)=>{
     })
 });
 
-//N
+//NEW
+router.get('/bandanas/new', (req,res)=>{
+    res.render('bandanaViews/bandanaNew.ejs')
+})
 
 //D
 
 //U
 
-//C
+//CREATE
+router.post('/bandanas', (req,res)=>{
+    Bandana.create(req.body, (err, createdBandana)=>{
+        if(err){
+            console.log(err)
+            res.send(err)
+        }else{
+            console.log(createdBandana);
+            res.redirect('/novascloset/bandanas');
+        }
+    })
+});
 
 //E
 
