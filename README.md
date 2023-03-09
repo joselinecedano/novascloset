@@ -25,5 +25,5 @@ A pet store website built using Node.js, Mongoose, Express, and EJS.
 * Have 3-4 models that all render in one page and lead the user to their respective index and show pages.
 * Add a cart that a user can add and remove items from. 
 
-## Website Link:
+## Website Link
 * 
