@@ -7,7 +7,7 @@
     <ul>
     <% bandanas.forEach(bandana => {%>
         <li>
-            <a><img src="<%=bandana.img%>"></a>
+            <a href="/novascloset/bandanas/<%=bandana._id;%><%bandana%>"><img src="<%=bandana.img%>"></a>
             <h3> <%= bandana.title%> </h3>
             <p> Price: $<%=bandana.price%> </p>
     <% });%>

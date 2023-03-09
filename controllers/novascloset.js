@@ -42,7 +42,7 @@ router.get('/seed', (req,res)=>{
 });
 
 //INDEX
-router.get('/', (req,res)=>{
+router.get('/bandanas', (req,res)=>{
     Bandana.find({}, (err, allBandanas)=>{
         if(err){
             console.log(err)
@@ -64,7 +64,14 @@ router.get('/', (req,res)=>{
 
 //E
 
-//S
+//SHOW
+router.get('/bandanas/:id', (req,res)=>{
+    Bandana.findById(req.params.id, (err, foundBandana)=>{
+        res.render('bandanaViews/bandanaShow.ejs', {
+            bandana: foundBandana,
+        })
+    })
+});
 
 
 //EXPORT ROUTER
