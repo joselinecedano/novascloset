@@ -88,6 +88,9 @@ router.get('/bandanas/new', (req,res)=>{
 router.get('/costumes/new', (req,res)=>{
     res.render('costumeViews/costumeNew.ejs');
 })
+router.get('/treats/new', (req,res)=>{
+    res.render('treatViews/treatNew.ejs');
+})
 
 //DELETE
 router.delete('/bandanas/:id', (req,res)=>{
@@ -168,6 +171,17 @@ router.post('/costumes', (req,res)=>{
         }else{
             console.log(createdCostume);
             res.redirect('/novascloset/costumes');
+        }
+    })
+});
+router.post('/treats', (req,res)=>{
+    Treat.create(req.body, (err, createdTreat)=>{
+        if(err){
+            console.log(err)
+            res.send(err)
+        }else{
+            console.log(createdTreat);
+            res.redirect('/novascloset/treats');
         }
     })
 });
