@@ -16,4 +16,7 @@
 <form action="/novascloset/bandanas/<%=bandana._id%>?_method=DELETE" method="POST">
 <input type="submit" value="DELETE">
 </form>
+<!-- sends user to edit page -->
+<button><a href="/novascloset/bandanas/<%=bandana._id%>/edit">EDIT</a></button>
+
 <%-include ('../partials/footer.ejs')%>

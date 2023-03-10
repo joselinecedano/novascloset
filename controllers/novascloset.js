@@ -90,7 +90,19 @@ router.post('/bandanas', (req,res)=>{
     })
 });
 
-//E
+//EDIT
+router.get('/bandanas/:id/edit', (req,res)=>{
+Bandana.findById(req.params.id, (err, foundBandana)=>{
+    if(err){
+        console.log(err)
+        res.send(err)
+    }else{
+        res.render('bandanaViews/bandanaEdit.ejs',{
+            bandana: foundBandana,
+            })
+        }
+    })
+});
 
 //SHOW
 router.get('/bandanas/:id', (req,res)=>{

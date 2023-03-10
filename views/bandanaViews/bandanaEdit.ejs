@@ -1,0 +1,27 @@
+<%-include ('../partials/header.ejs')%>
+
+<div class="bandanaEditContainer">
+    <h1>
+        Edit Bandana?
+    </h1>
+    <form action="/novascloset/bandanas" method="POST">
+        <label for="title">Title:</label>
+        <input type="text" name="title" value="<%=bandana.title%>"><br>
+    
+        <label for="img">Image Url: </label>
+        <input type="text" name="img" value="<%=bandana.img%>"><br>
+    
+        <label for="description">Description: </label>
+        <input type="text" name="description" value="<%=bandana.description%>"><br>
+    
+        <label for="price">Price: </label>
+        <input type="number" name="price" value="<%=bandana.price%>"><br>
+    
+        <label for="qty">Quantity: </label>
+        <input type="number" name="qty" value="<%=bandana.qty%>"><br>
+    
+        <input type="submit" value=" Edit Bandana">
+    </form>
+</div>
+
+<%-include ('../partials/footer.ejs')%>
