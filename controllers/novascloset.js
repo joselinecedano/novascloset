@@ -62,13 +62,23 @@ router.get('/bandanas/new', (req,res)=>{
     res.render('bandanaViews/bandanaNew.ejs')
 })
 
-//D
+//DELETE
+router.delete('/bandanas/:id', (req,res)=>{
+    Bandana.findByIdAndDelete(req.params.id, (err, deletedBandana)=>{
+        if(err){
+            console.log(err)
+            res.send(err)
+        }else{
+            console.log(deletedBandana)
+            res.redirect('/novascloset/bandanas')
+        }
+    })
+});
 
 //U
 
 //CREATE
 router.post('/bandanas', (req,res)=>{
-    console.log(req.body)
     Bandana.create(req.body, (err, createdBandana)=>{
         if(err){
             console.log(err)
