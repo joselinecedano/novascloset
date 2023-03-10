@@ -1,0 +1,15 @@
+<%-include ('../partials/header.ejs')%>
+
+<div class="newContainer register">
+<h1> New User? </h1>
+    <form action="/users/register" method="POST">
+        <label for="username" >Username: </labe>
+        <input type="text" name="username">
+        <br>
+        <label for="password" >Password: </labe>
+        <input type="text" name="password">
+        <br>
+        <input type="submit" value="Register" class="submitBtns">
+    </form>
+</div>
+<%-include ('../partials/footer.ejs')%>
