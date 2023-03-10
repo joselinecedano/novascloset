@@ -73,6 +73,9 @@ router.get('/costumes', (req,res)=>{
 router.get('/bandanas/new', (req,res)=>{
     res.render('bandanaViews/bandanaNew.ejs');
 })
+router.get('/costumes/new', (req,res)=>{
+    res.render('costumeViews/costumeNew.ejs');
+})
 
 //DELETE
 router.delete('/bandanas/:id', (req,res)=>{
@@ -109,6 +112,17 @@ router.post('/bandanas', (req,res)=>{
         }else{
             console.log(createdBandana);
             res.redirect('/novascloset/bandanas');
+        }
+    })
+});
+router.post('/costumes', (req,res)=>{
+    Costume.create(req.body, (err, createdCostume)=>{
+        if(err){
+            console.log(err)
+            res.send(err)
+        }else{
+            console.log(createdCostume);
+            res.redirect('/novascloset/costumes');
         }
     })
 });

@@ -1,0 +1,27 @@
+<%-include ('../partials/header.ejs')%>
+
+<h2>
+    New Costume?
+</h2>
+<div class="newContainer">
+<form action="/novascloset/costumes" method="POST">
+    <label for="title">Title:</label>
+    <input type="text" name="title"><br>
+
+    <label for="img">Image Url: </label>
+    <input type="text" name="img"><br>
+
+    <label for="description">Description: </label>
+    <input type="text" name="description"><br>
+
+    <label for="price">Price: </label>
+    <input type="number" name="price"><br>
+
+    <label for="qty">Quantity: </label>
+    <input type="number" name="qty"><br>
+
+    <input type="submit" value="Create New Costume" class="submitBtns">
+</form>
+</div>
+
+<%-include ('../partials/footer.ejs')%>
