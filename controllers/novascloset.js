@@ -89,6 +89,17 @@ router.delete('/bandanas/:id', (req,res)=>{
         }
     })
 });
+router.delete('/costumes/:id', (req,res)=>{
+    Costume.findByIdAndDelete(req.params.id, (err, deletedCostume)=>{
+        if(err){
+            console.log(err);
+            res.send(err);
+        }else{
+            console.log(deletedCostume);
+            res.redirect('/novascloset/costumes');
+        }
+    })
+});
 
 //UPDATE
 router.put('/bandanas/:id', (req,res)=>{
