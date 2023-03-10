@@ -1,0 +1,22 @@
+<%-include ('../partials/header.ejs')%>
+
+<div class="bandanaShowContainer">
+<h2>
+    <%=treat.title%>
+</h2>
+<img class="bandanaShowImg" src="<%=treat.img%>">
+<p>
+    Description: <br>
+    <%=treat.description%> <br>
+    Price: $ <%=treat.price%> <br>
+</p>
+</div>
+<br>
+<!-- triggers delete  -->
+<form action="/novascloset/treats/<%=treat._id%>?_method=DELETE" method="POST">
+<input type="submit" value="DELETE" class="submitBtns">
+</form>
+<!-- sends user to edit page -->
+<button class="submitBtns"><a href="/novascloset/treats/<%=treat._id%>/edit">EDIT</a></button>
+
+<%-include ('../partials/footer.ejs')%>

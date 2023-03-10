@@ -202,6 +202,13 @@ router.get('/costumes/:id', (req,res)=>{
         })
     })
 });
+router.get('/treats/:id', (req,res)=>{
+    Treat.findById(req.params.id, (err, foundTreat)=>{
+        res.render('treatViews/treatShow.ejs', {
+            treat: foundTreat,
+        })
+    })
+});
 
 
 //EXPORT ROUTER
