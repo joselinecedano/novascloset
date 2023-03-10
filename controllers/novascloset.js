@@ -113,6 +113,17 @@ router.put('/bandanas/:id', (req,res)=>{
         }
     })
 })
+router.put('/costumes/:id', (req,res)=>{
+    Costume.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedCostume)=>{
+        if(err){
+            console.log(err);
+            res.send(err);
+        }else{
+            console.log(updatedCostume);
+            res.redirect(`/novascloset/costumes/${updatedCostume._id}`);
+        }
+    })
+})
 
 //CREATE
 router.post('/bandanas', (req,res)=>{
@@ -147,6 +158,18 @@ Bandana.findById(req.params.id, (err, foundBandana)=>{
     }else{
         res.render('bandanaViews/bandanaEdit.ejs',{
             bandana: foundBandana,
+            })
+        }
+    })
+});
+router.get('/costumes/:id/edit', (req,res)=>{
+Costume.findById(req.params.id, (err, foundCostume)=>{
+    if(err){
+        console.log(err)
+        res.send(err)
+    }else{
+        res.render('costumeViews/costumeEdit.ejs',{
+            costume: foundCostume,
             })
         }
     })

@@ -1,0 +1,27 @@
+<%-include ('../partials/header.ejs')%>
+
+    <h2>
+        Edit Costume?
+    </h2>
+    <div class="editContainer">
+    <form action="/novascloset/costumes/<%=costume._id%>?_method=PUT" method="POST">
+        <label for="title">Title:</label>
+        <input type="text" name="title" value="<%=costume.title%>"><br>
+    
+        <label for="img">Image Url: </label>
+        <input type="text" name="img" value="<%=costume.img%>"><br>
+    
+        <label for="description">Description: </label>
+        <input type="text" name="description" value="<%=costume.description%>"><br>
+    
+        <label for="price">Price: </label>
+        <input type="number" name="price" value="<%=costume.price%>"><br>
+    
+        <label for="qty">Quantity: </label>
+        <input type="number" name="qty" value="<%=costume.qty%>"><br>
+    
+        <input type="submit" value=" Edit Costume" class="submitBtns">
+    </form>
+</div>
+
+<%-include ('../partials/footer.ejs')%>
