@@ -1,9 +1,9 @@
 <%-include ('../partials/header.ejs')%>
 
-<div class="bandanaNewContainer">
-<h1>
+<h2>
     New Bandana?
-</h1>
+</h2>
+<div class="newContainer">
 <form action="/novascloset/bandanas" method="POST">
     <label for="title">Title:</label>
     <input type="text" name="title"><br>
@@ -20,7 +20,7 @@
     <label for="qty">Quantity: </label>
     <input type="number" name="qty"><br>
 
-    <input type="submit" value="Create New Bandana">
+    <input type="submit" value="Create New Bandana" class="submitBtns">
 </form>
 </div>
 

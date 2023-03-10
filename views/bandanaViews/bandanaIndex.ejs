@@ -1,18 +1,22 @@
 <%-include ('../partials/header.ejs')%>
 
-<div class="bandanaIndexContainer" >
-    <h1>
+<div class="indexContainer" >
+    <h2>
         Nova's Bandana's 
-    </h1>
+    </h2>
 
     <ul>
     <% bandanas.forEach(bandana => {%>
+        
         <li>
+            <div class="items">
             <a href="/novascloset/bandanas/<%=bandana._id;%><%bandana%>"><img src="<%=bandana.img%>"></a>
             <h3> <%= bandana.title%> </h3>
             <p> Price: $<%=bandana.price%> </p>
+        </div>
     <%});%>
         </li>
+    
     </ul>
 </div>
 

@@ -30,6 +30,8 @@ app.use(express.urlencoded({extended:true}));
     // ^^ gives us access to req.body ^^^
 app.use(methodOverride('_method'));
     // ^^ gives us access to DELETE and _method ^^
+app.use(express.static('public'));
+    // ^^ allows us to use css ^^
 app.use('/novascloset', novasClosetController);
     // ^^ gives us access to router ^^
     //MUST BE AFTER ALL OTHER MIDDLEWARE
