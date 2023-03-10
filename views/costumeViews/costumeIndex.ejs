@@ -1,0 +1,26 @@
+<%-include ('../partials/header.ejs')%>
+
+<div class="indexContainer" >
+    <h2>
+        Nova's Costume's 
+    </h2>
+
+    <ul>
+    <% costumes.forEach(costume => {%>
+        
+        <li>
+            <div class="items">
+            <a href="/novascloset/costumes/<%=costume._id;%><%costume%>"><img src="<%=costume.img%>"></a>
+            <h3> <%= costume.title%> </h3>
+            <p> Price: $<%=costume.price%> </p>
+        </div>
+    <%});%>
+        </li>
+    
+    </ul>
+</div>
+
+<!-- link to new costume route -->
+<a href="/novascloset/costumes/new"> New Costume? </a> 
+
+<%-include('../partials/footer.ejs')%>

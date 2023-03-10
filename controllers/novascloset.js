@@ -1,6 +1,7 @@
 //DEPENDENCIES
 const express = require('express');
 const Bandana = require('../models/bandanas.js');
+const Costume = require('../models/costumes.js');
 const router = express.Router();
 
 //ROUTES
@@ -10,34 +11,34 @@ router.get('/', (req,res)=>{
 });
 //SEED
 router.get('/seed', (req,res)=>{
-    Bandana.create([
+    Costume.create([
         {
-            title:'Lavender Bandana',
-            img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRV72Xj8b9Xx21L8VsF2da63HJ0ZohtgVohdA&usqp=CAU',
-            description:'Purple Super Cute Floral Bandana',
-            price: 12,
+            title:'Krab Costume',
+            img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK9hm5rYu2rfE-EC0kyp47wRxhadVAr8vBwavVm9RKQtPDFdMTpAxsCfxEEbmOlz56D4A&usqp=CAU',
+            description:'cute krab dog costume',
+            price: 24,
             qty: 10,
         },
         {
-            title: 'Brown Bandana',
-            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2H2JaNLur5GyB5JjGOqK4JrFky9Quc1IUrdnQD6x9Yf6Ta-qlxG-8sWPCJvXvXIKxjQU&usqp=CAU',
-            description: 'Brown Super Cute Hippy Bandana',
+            title: 'Panda Costume',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZG81Ds71-1j0n1-J_EoG_iLvIXKvb9yZOeg&usqp=CAU',
+            description: 'cute panda dog costume',
             price: 19,
-            qty: 10,
+            qty: 16,
         },
         {
-            title: 'Black Bandana',
-            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj--mSOs3RQAiF2v_LaYUnh_TXbUy6JoUBPg&usqp=CAU',
-            description: 'Black Super Chic Bandana',
+            title: 'Cowboy Costume',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEh5NweV3yWaSXSkLzUX_r4M_q1vOXwiYcDAAxVT66ZNf65H4rMqJmpP5PGTVYYOypSW4&usqp=CAU',
+            description: 'funny cowboy dog cosutme',
             price: 17,
-            qty: 10,
+            qty: 4,
         },
         {
             title: 'White Bandana',
-            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmNd5a7lPVq2Q7hTpnB7RUG1jU5EM7Qx_b4g&usqp=CAU',
-            description: 'White Super Minimalistic Bandana',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSop8Tbjk7RF8fYRiGe93ugif7B7DQ6CaM2mw&usqp=CAU',
+            description: 'funny dinosaur dog costume',
             price: 15,
-            qty: 10,
+            qty: 40,
         },
     ], (err, data)=>{
         res.redirect('/novascloset')
@@ -52,6 +53,17 @@ router.get('/bandanas', (req,res)=>{
         }else{
             res.render('bandanaViews/bandanaIndex.ejs',{
                 bandanas: allBandanas,
+            })
+        }
+    })
+});
+router.get('/costumes', (req,res)=>{
+    Costume.find({}, (err, allCostumes)=>{
+        if(err){
+            console.log(err);
+        }else{
+            res.render('costumeViews/costumeIndex.ejs',{
+                costumes: allCostumes,
             })
         }
     })
