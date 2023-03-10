@@ -1,0 +1,26 @@
+<%-include ('../partials/header.ejs')%>
+
+<div class="indexContainer" >
+    <h2>
+        Nova's Treat's 
+    </h2>
+
+    <ul>
+    <% treats.forEach(treat => {%>
+        
+        <li>
+            <div class="items">
+            <a href="/novascloset/treats/<%=treat._id;%><%treat%>"><img src="<%=treat.img%>"></a>
+            <h3> <%= treat.title%> </h3>
+            <p> Price: $<%=treat.price%> </p>
+        </div>
+    <%});%>
+        </li>
+    
+    </ul>
+</div>
+
+<!-- link to new treat route -->
+<a href="/novascloset/costumes/new"> New Treat? </a> 
+
+<%-include('../partials/footer.ejs')%>

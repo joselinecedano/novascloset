@@ -1,7 +1,7 @@
 //Collars Schema
 const mongoose = require('mongoose');
 
-const collarSchema = new mongoose.Schema({
+const treatSchema = new mongoose.Schema({
     title: {type: String, required: true},
     img: {type: String, required: true},
     description: {type: String, required: true},
@@ -9,5 +9,5 @@ const collarSchema = new mongoose.Schema({
     qty: {type: Number, min: 0},
 });
 
-const Collar = mongoose.model('Collar', collarSchema);
-module.exports = Collar
+const Treat = mongoose.model('Treat', treatSchema);
+module.exports = Treat

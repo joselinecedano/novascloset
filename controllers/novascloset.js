@@ -2,7 +2,7 @@
 const express = require('express');
 const Bandana = require('../models/bandanas.js');
 const Costume = require('../models/costumes.js');
-const Collar = require('../models/collars.js');
+const Treat = require('../models/treats.js');
 const router = express.Router();
 
 //ROUTES
@@ -12,32 +12,32 @@ router.get('/', (req,res)=>{
 });
 //SEED
 router.get('/seed', (req,res)=>{
-    Costume.create([
+    Treat.create([
         {
-            title:'Krab Costume',
-            img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK9hm5rYu2rfE-EC0kyp47wRxhadVAr8vBwavVm9RKQtPDFdMTpAxsCfxEEbmOlz56D4A&usqp=CAU',
-            description:'cute krab dog costume',
+            title:'Pumpkin and Peanut Butter Treats',
+            img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKH3oDwH2PgIrYJmSyiYeg8YtRI5eMcArzVg&usqp=CAU',
+            description:'natural homemade oumpking and peanut butter dog treats',
             price: 24,
             qty: 10,
         },
         {
-            title: 'Panda Costume',
-            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZG81Ds71-1j0n1-J_EoG_iLvIXKvb9yZOeg&usqp=CAU',
-            description: 'cute panda dog costume',
+            title: 'Watermelon Treats',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeKV-PGc4U-MV15DgkGCPTw47GTal7DE_DAEqeV_ObwAZZ0zEWLJ9wU77c5yarz7OZ2v0&usqp=CAU',
+            description: 'frozen watermelon dog treats',
             price: 19,
             qty: 16,
         },
         {
-            title: 'Cowboy Costume',
-            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEh5NweV3yWaSXSkLzUX_r4M_q1vOXwiYcDAAxVT66ZNf65H4rMqJmpP5PGTVYYOypSW4&usqp=CAU',
-            description: 'funny cowboy dog cosutme',
+            title: 'Strawberry Treats',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJSK-udRBycfMSjolRkRvHVbSpXXuITZDvrQ&usqp=CAU',
+            description: 'frozen strawberry dog treats',
             price: 17,
             qty: 4,
         },
         {
-            title: 'White Bandana',
-            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSop8Tbjk7RF8fYRiGe93ugif7B7DQ6CaM2mw&usqp=CAU',
-            description: 'funny dinosaur dog costume',
+            title: 'Waffle Treats',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpZ8hGN6Hh2EmQBM-tsGxEFdYjv7vfVvJOHQ&usqp=CAU',
+            description: 'cute waffle shaped dog friendly treats',
             price: 15,
             qty: 40,
         },
@@ -65,6 +65,17 @@ router.get('/costumes', (req,res)=>{
         }else{
             res.render('costumeViews/costumeIndex.ejs',{
                 costumes: allCostumes,
+            })
+        }
+    })
+});
+router.get('/treats', (req,res)=>{
+    Treat.find({}, (err, allTreats)=>{
+        if(err){
+            console.log(err);
+        }else{
+            res.render('treatViews/treatIndex.ejs',{
+                treats: allTreats,
             })
         }
     })
