@@ -5,6 +5,16 @@ const Costume = require('../models/costumes.js');
 const Treat = require('../models/treats.js');
 const router = express.Router();
 
+//MIDDLEWARE
+const authRequired = (req, res, next)=>{
+    if( req.session.currentUser){
+        next()
+    }else{
+        res.send('You do not have access to this page')
+        res.redirect('/users/login')
+    }
+};
+
 //ROUTES
 //HOME
 router.get('/', (req,res)=>{
@@ -82,18 +92,18 @@ router.get('/treats', (req,res)=>{
 });
 
 //NEW
-router.get('/bandanas/new', (req,res)=>{
+router.get('/bandanas/new', authRequired, (req,res)=>{
     res.render('bandanaViews/bandanaNew.ejs');
 })
-router.get('/costumes/new', (req,res)=>{
+router.get('/costumes/new', authRequired, (req,res)=>{
     res.render('costumeViews/costumeNew.ejs');
 })
-router.get('/treats/new', (req,res)=>{
+router.get('/treats/new', authRequired,(req,res)=>{
     res.render('treatViews/treatNew.ejs');
 })
 
 //DELETE
-router.delete('/bandanas/:id', (req,res)=>{
+router.delete('/bandanas/:id', authRequired,(req,res)=>{
     Bandana.findByIdAndDelete(req.params.id, (err, deletedBandana)=>{
         if(err){
             console.log(err);
@@ -104,7 +114,7 @@ router.delete('/bandanas/:id', (req,res)=>{
         }
     })
 });
-router.delete('/costumes/:id', (req,res)=>{
+router.delete('/costumes/:id', authRequired,(req,res)=>{
     Costume.findByIdAndDelete(req.params.id, (err, deletedCostume)=>{
         if(err){
             console.log(err);
@@ -115,7 +125,7 @@ router.delete('/costumes/:id', (req,res)=>{
         }
     })
 });
-router.delete('/treats/:id', (req,res)=>{
+router.delete('/treats/:id', authRequired,(req,res)=>{
     Treat.findByIdAndDelete(req.params.id, (err, deletedTreat)=>{
         if(err){
             console.log(err);
@@ -128,7 +138,7 @@ router.delete('/treats/:id', (req,res)=>{
 });
 
 //UPDATE
-router.put('/bandanas/:id', (req,res)=>{
+router.put('/bandanas/:id', authRequired, (req,res)=>{
     Bandana.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedBandana)=>{
         if(err){
             console.log(err);
@@ -139,7 +149,7 @@ router.put('/bandanas/:id', (req,res)=>{
         }
     })
 })
-router.put('/costumes/:id', (req,res)=>{
+router.put('/costumes/:id',authRequired, (req,res)=>{
     Costume.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedCostume)=>{
         if(err){
             console.log(err);
@@ -150,7 +160,7 @@ router.put('/costumes/:id', (req,res)=>{
         }
     })
 })
-router.put('/treats/:id', (req,res)=>{
+router.put('/treats/:id',authRequired, (req,res)=>{
     Treat.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedTreat)=>{
         if(err){
             console.log(err);
@@ -220,7 +230,7 @@ router.put('/treats/:id/buy', (req,res)=>{
     })
 });
 //CREATE
-router.post('/bandanas', (req,res)=>{
+router.post('/bandanas', authRequired, (req,res)=>{
     Bandana.create(req.body, (err, createdBandana)=>{
         if(err){
             console.log(err)
@@ -231,7 +241,7 @@ router.post('/bandanas', (req,res)=>{
         }
     })
 });
-router.post('/costumes', (req,res)=>{
+router.post('/costumes',authRequired, (req,res)=>{
     Costume.create(req.body, (err, createdCostume)=>{
         if(err){
             console.log(err)
@@ -242,7 +252,7 @@ router.post('/costumes', (req,res)=>{
         }
     })
 });
-router.post('/treats', (req,res)=>{
+router.post('/treats',authRequired, (req,res)=>{
     Treat.create(req.body, (err, createdTreat)=>{
         if(err){
             console.log(err)
@@ -255,7 +265,7 @@ router.post('/treats', (req,res)=>{
 });
 
 //EDIT
-router.get('/bandanas/:id/edit', (req,res)=>{
+router.get('/bandanas/:id/edit', authRequired, (req,res)=>{
 Bandana.findById(req.params.id, (err, foundBandana)=>{
     if(err){
         console.log(err)
@@ -267,7 +277,7 @@ Bandana.findById(req.params.id, (err, foundBandana)=>{
         }
     })
 });
-router.get('/costumes/:id/edit', (req,res)=>{
+router.get('/costumes/:id/edit', authRequired,(req,res)=>{
 Costume.findById(req.params.id, (err, foundCostume)=>{
     if(err){
         console.log(err)
@@ -279,7 +289,7 @@ Costume.findById(req.params.id, (err, foundCostume)=>{
         }
     })
 });
-router.get('/treats/:id/edit', (req,res)=>{
+router.get('/treats/:id/edit', authRequired, (req,res)=>{
 Treat.findById(req.params.id, (err, foundTreat)=>{
     if(err){
         console.log(err)
