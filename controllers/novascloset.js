@@ -48,7 +48,7 @@ router.get('/seed', (req,res)=>{
 router.get('/bandanas', (req,res)=>{
     Bandana.find({}, (err, allBandanas)=>{
         if(err){
-            console.log(err)
+            console.log(err);
         }else{
             res.render('bandanaViews/bandanaIndex.ejs',{
                 bandanas: allBandanas,
@@ -59,23 +59,34 @@ router.get('/bandanas', (req,res)=>{
 
 //NEW
 router.get('/bandanas/new', (req,res)=>{
-    res.render('bandanaViews/bandanaNew.ejs')
+    res.render('bandanaViews/bandanaNew.ejs');
 })
 
 //DELETE
 router.delete('/bandanas/:id', (req,res)=>{
     Bandana.findByIdAndDelete(req.params.id, (err, deletedBandana)=>{
         if(err){
-            console.log(err)
-            res.send(err)
+            console.log(err);
+            res.send(err);
         }else{
-            console.log(deletedBandana)
-            res.redirect('/novascloset/bandanas')
+            console.log(deletedBandana);
+            res.redirect('/novascloset/bandanas');
         }
     })
 });
 
-//U
+//UPDATE
+router.put('/bandanas/:id', (req,res)=>{
+    Bandana.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedBandana)=>{
+        if(err){
+            console.log(err);
+            res.send(err);
+        }else{
+            console.log(updatedBandana);
+            res.redirect(`/novascloset/bandanas/${updatedBandana._id}`);
+        }
+    })
+})
 
 //CREATE
 router.post('/bandanas', (req,res)=>{
