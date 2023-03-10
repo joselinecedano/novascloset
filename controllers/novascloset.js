@@ -1,12 +1,12 @@
 //DEPENDENCIES
 const express = require('express');
-const Bandana = require('../models/bandanasModel/bandanas');
+const Bandana = require('../models/bandanas.js');
 const router = express.Router();
 
 //ROUTES
 //HOME
 router.get('/', (req,res)=>{
-    res.send("Nova's Closet")
+    res.render('home.ejs')
 });
 //SEED
 router.get('/seed', (req,res)=>{
@@ -68,6 +68,7 @@ router.get('/bandanas/new', (req,res)=>{
 
 //CREATE
 router.post('/bandanas', (req,res)=>{
+    console.log(req.body)
     Bandana.create(req.body, (err, createdBandana)=>{
         if(err){
             console.log(err)

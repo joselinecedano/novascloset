@@ -4,15 +4,19 @@
     <h1>
         Nova's Bandana's 
     </h1>
+
     <ul>
     <% bandanas.forEach(bandana => {%>
         <li>
             <a href="/novascloset/bandanas/<%=bandana._id;%><%bandana%>"><img src="<%=bandana.img%>"></a>
             <h3> <%= bandana.title%> </h3>
             <p> Price: $<%=bandana.price%> </p>
-    <% });%>
+    <%});%>
         </li>
     </ul>
 </div>
+
+<!-- link to new bandana route -->
+<a href="/novascloset/bandanas/new"> New Bandana? </a> 
 
 <%-include('../partials/footer.ejs')%>
