@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const Bandana = require('./models/bandanas.js');
 const Costume = require('./models/costumes.js');
+const Collar = require('./models/collars.js');
 
 //PORT 
 require('dotenv').config();
