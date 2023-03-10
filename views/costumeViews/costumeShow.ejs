@@ -1,0 +1,22 @@
+<%-include ('../partials/header.ejs')%>
+
+<div class="bandanaShowContainer">
+<h2>
+    <%=costume.title%>
+</h2>
+<img class="bandanaShowImg" src="<%=costume.img%>">
+<p>
+    Description: <br>
+    <%=costume.description%> <br>
+    Price: $ <%=costume.price%> <br>
+</p>
+</div>
+<br>
+<!-- triggers delete  -->
+<form action="/novascloset/costumes/<%=costume._id%>?_method=DELETE" method="POST">
+<input type="submit" value="DELETE" class="submitBtns">
+</form>
+<!-- sends user to edit page -->
+<button class="submitBtns"><a href="/novascloset/costume/<%=costume._id%>/edit">EDIT</a></button>
+
+<%-include ('../partials/footer.ejs')%>

@@ -135,6 +135,13 @@ router.get('/bandanas/:id', (req,res)=>{
         })
     })
 });
+router.get('/costumes/:id', (req,res)=>{
+    Costume.findById(req.params.id, (err, foundCostume)=>{
+        res.render('costumeViews/costumeShow.ejs', {
+            costume: foundCostume,
+        })
+    })
+});
 
 
 //EXPORT ROUTER
