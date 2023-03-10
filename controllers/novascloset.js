@@ -136,6 +136,17 @@ router.put('/costumes/:id', (req,res)=>{
         }
     })
 })
+router.put('/treats/:id', (req,res)=>{
+    Treat.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedTreat)=>{
+        if(err){
+            console.log(err);
+            res.send(err);
+        }else{
+            console.log(updatedTreat);
+            res.redirect(`/novascloset/treats/${updatedTreat._id}`);
+        }
+    })
+})
 
 //CREATE
 router.post('/bandanas', (req,res)=>{
@@ -182,6 +193,18 @@ Costume.findById(req.params.id, (err, foundCostume)=>{
     }else{
         res.render('costumeViews/costumeEdit.ejs',{
             costume: foundCostume,
+            })
+        }
+    })
+});
+router.get('/treats/:id/edit', (req,res)=>{
+Treat.findById(req.params.id, (err, foundTreat)=>{
+    if(err){
+        console.log(err)
+        res.send(err)
+    }else{
+        res.render('treatViews/treatEdit.ejs',{
+            treat: foundTreat,
             })
         }
     })

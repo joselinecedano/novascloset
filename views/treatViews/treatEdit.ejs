@@ -1,0 +1,27 @@
+<%-include ('../partials/header.ejs')%>
+
+    <h2>
+        Edit Treat?
+    </h2>
+    <div class="editContainer">
+    <form action="/novascloset/treats/<%=treat._id%>?_method=PUT" method="POST">
+        <label for="title">Title:</label>
+        <input type="text" name="title" value="<%=treat.title%>"><br>
+    
+        <label for="img">Image Url: </label>
+        <input type="text" name="img" value="<%=treat.img%>"><br>
+    
+        <label for="description">Description: </label>
+        <input type="text" name="description" value="<%=treat.description%>"><br>
+    
+        <label for="price">Price: </label>
+        <input type="number" name="price" value="<%=treat.price%>"><br>
+    
+        <label for="qty">Quantity: </label>
+        <input type="number" name="qty" value="<%=treat.qty%>"><br>
+    
+        <input type="submit" value=" Edit Treat" class="submitBtns">
+    </form>
+</div>
+
+<%-include ('../partials/footer.ejs')%>
