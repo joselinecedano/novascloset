@@ -31,10 +31,34 @@ router.post('/register', (req,res)=>{
         }
     })
 });
-//renders user log in page
+
+//renders user login page
 router.get('/login', (req,res)=>{
     res.render('userViews/login.ejs')
 })
+router.post('/login', (req,res)=>{
+    //find user with entered username
+    User.findOne({username: req.body.username}, (err, foundUser)=>{
+        if(foundUser){
+            //if username found compare w entered password
+            const validLogin = bcrypt.compareSync(req.body.password, foundUser.password);
+            //returns true if matched
+            //if matched log user in
+        if(validLogin){
+            req.session.currentUser = foundUser;
+            //let session know we are logged in
+            res.redirect('/novascloset');
+        }else{
+            res.send('Invalid Username or Password. Please try again. Thank You!');
+        }
+        }else{
+            //if user does NOT exist 
+            res.send('Invalid Username or Password. Please try again. Thank You!');
+        }
+    })
+});
+
+//
 
 //export router
 module.exports = router;
