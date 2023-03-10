@@ -85,6 +85,9 @@ h2{
     background-color: transparent;
     border: none;
 }
+.credentials{
+    font-size: 25px;
+}
 a:hover, .submitBtns:hover,.footerBtn:hover{
    color:gray;
    font-size: 30px;

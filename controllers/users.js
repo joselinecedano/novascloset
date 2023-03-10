@@ -31,7 +31,9 @@ router.post('/register', (req,res)=>{
         }
     })
 });
-
+router.get('/',(req,res)=>{
+    res.render('account.ejs')
+})
 //renders user login page
 router.get('/login', (req,res)=>{
     res.render('userViews/login.ejs')
