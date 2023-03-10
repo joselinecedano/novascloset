@@ -7,11 +7,16 @@ const router = express.Router();
 
 //MIDDLEWARE
 const authRequired = (req, res, next)=>{
-    if( req.session.currentUser){
+    //check if the username and the current user is = admin
+    if( req.session.currentUser && req.session.currentUser.username === 'admin'){
         next()
     }else{
-        res.send('You do not have access to this page')
-        res.redirect('/users/login')
+        //if user is not admin then let them know they do not have access
+        if(req.session.currentUser){
+            res.send('You do not have access to this page')
+        }else{
+          res.redirect('/users/login')  
+        }
     }
 };
 
