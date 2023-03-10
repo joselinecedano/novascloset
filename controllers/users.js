@@ -48,6 +48,7 @@ router.post('/login', (req,res)=>{
             req.session.currentUser = foundUser;
             //let session know we are logged in
             res.redirect('/novascloset');
+            console.log(req.body.username, 'logged in')
         }else{
             res.send('Invalid Username or Password. Please try again. Thank You!');
         }
@@ -58,7 +59,13 @@ router.post('/login', (req,res)=>{
     })
 });
 
-//
+//log user out <--- DESTROY SESSION 
+router.get('/logout', (req,res)=>{
+    //destroys the session but can still access user through the req object 
+    console.log(req.session.currentUser, 'logged out');
+    req.session.destroy();
+    res.redirect('/novascloset');
+});
 
 //export router
 module.exports = router;
