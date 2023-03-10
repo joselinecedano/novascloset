@@ -115,6 +115,17 @@ router.delete('/costumes/:id', (req,res)=>{
         }
     })
 });
+router.delete('/treats/:id', (req,res)=>{
+    Treat.findByIdAndDelete(req.params.id, (err, deletedTreat)=>{
+        if(err){
+            console.log(err);
+            res.send(err);
+        }else{
+            console.log(deletedTreat);
+            res.redirect('/novascloset/treats');
+        }
+    })
+});
 
 //UPDATE
 router.put('/bandanas/:id', (req,res)=>{
