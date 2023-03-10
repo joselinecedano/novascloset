@@ -4,16 +4,16 @@
         display: none;
     }
 </style>
-<div class="newContainer register">
-<h1> New User? </h1>
-    <form action="/users/register" method="POST">
+<div class="newContainer login">
+<h1> Sign In? </h1>
+    <form action="/users/login" method="POST">
         <label for="username" >Username: </labe>
         <input type="text" name="username">
         <br>
         <label for="password" >Password: </labe>
         <input type="text" name="password">
         <br>
-        <input type="submit" value="Register" class="submitBtns">
+        <input type="submit" value="Submit" class="submitBtns">
     </form>
 </div>
 <%-include ('../partials/footer.ejs')%>
