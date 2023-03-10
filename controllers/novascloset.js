@@ -160,8 +160,65 @@ router.put('/treats/:id', (req,res)=>{
             res.redirect(`/novascloset/treats/${updatedTreat._id}`);
         }
     })
-})
-
+});
+//BUY
+router.put('/bandanas/:id/buy', (req,res)=>{
+    Bandana.findById(req.params.id, (err, boughtBandana)=>{
+        if(err){
+            console.log(err);
+            res.send(err);
+        }else{
+            boughtBandana.qty -= 1;
+            boughtBandana.save((err, boughtBandana)=>{
+                if(err){
+                    console.log(err);
+                    res.send(err);
+                }else{
+                    console.log(boughtBandana);
+                    res.redirect('/novascloset/bandanas');
+                }
+            });
+        }
+    })
+});
+router.put('/costumes/:id/buy', (req,res)=>{
+    Costume.findById(req.params.id, (err, boughtCostume)=>{
+        if(err){
+            console.log(err);
+            res.send(err);
+        }else{
+            boughtCostume.qty -= 1;
+            boughtCostume.save((err, boughtCostume)=>{
+                if(err){
+                    console.log(err);
+                    res.send(err);
+                }else{
+                    console.log(boughtCostume);
+                    res.redirect('/novascloset/costumes');
+                }
+            });
+        }
+    })
+});
+router.put('/treats/:id/buy', (req,res)=>{
+    Treat.findById(req.params.id, (err, boughtTreat)=>{
+        if(err){
+            console.log(err);
+            res.send(err);
+        }else{
+            boughtTreat.qty -= 1;
+            boughtTreat.save((err, boughtTreat)=>{
+                if(err){
+                    console.log(err);
+                    res.send(err);
+                }else{
+                    console.log(boughtTreat);
+                    res.redirect('/novascloset/treats');
+                }
+            });
+        }
+    })
+});
 //CREATE
 router.post('/bandanas', (req,res)=>{
     Bandana.create(req.body, (err, createdBandana)=>{

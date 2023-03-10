@@ -9,9 +9,26 @@
     Description: <br>
     <%=costume.description%> <br>
     Price: $ <%=costume.price%> <br>
+    <%if (costume.qty <= 10){%>
+        <span class="low">LOW STOCK</span>
+    <%} if(costume.qty === 0){%>
+        <span>OUT OF STOCK</span>
+        <style>
+            .buyBtn{
+                display: none;
+            }
+            .low{
+                display: none;
+            }
+        </style>
+    <%}%>
 </p>
 </div>
 <br>
+<!-- triggers buy -->
+<form action="/novascloset/costumes/<%=costume._id%>/buy?_method=PUT" method="POST">
+    <input type="submit" value="BUY" class="submitBtns buyBtn">
+    </form>
 <!-- triggers delete  -->
 <form action="/novascloset/costumes/<%=costume._id%>?_method=DELETE" method="POST">
 <input type="submit" value="DELETE" class="submitBtns">
