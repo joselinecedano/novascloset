@@ -12,6 +12,7 @@ nav{
 }
 a{
     text-decoration: none;
+    color: black;
 }
 body{
     background-image: url('/img/novascloset-bg.png');
@@ -49,6 +50,7 @@ li{
 }
 h2{
     font-size: 80px;
+    color: black;
 }
 .items{
     border:3px solid;
@@ -57,7 +59,7 @@ h2{
     border-radius: 20px;
 
 }
-.bandanaShowImg{
+.showImg{
     width: 350px;
     height: 350px;
     margin-top: -50px;
@@ -75,4 +77,17 @@ h2{
     font-size: 18px;
     margin: 3px;
     padding: 5px;
+}
+.insta{
+    width: 40px;
+    height: auto;
+}
+.footerBtn{
+    background-color: transparent;
+    border: none;
+}
+a:hover, .submitBtns:hover,.footerBtn:hover{
+   color:gray;
+   font-size: 30px;
+   cursor: pointer;
 }
