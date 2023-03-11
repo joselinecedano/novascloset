@@ -11,9 +11,10 @@ const session = require('express-session');
 //PORT 
 require('dotenv').config();
 //SESSION
-const SESSION_SECRET = process.env.SESSION_SECRET
-console.log(`Here is my session secret`)
-console.log(SESSION_SECRET)
+mongoose.set('strictQuery', true);
+const SESSION_SECRET = process.env.SESSION_SECRET;
+console.log(`Here is my session secret`);
+console.log(SESSION_SECRET);
 
 app.use(session({
     secret: SESSION_SECRET,
