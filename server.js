@@ -7,17 +7,20 @@ const Bandana = require('./models/bandanas.js');
 const Costume = require('./models/costumes.js');
 const Treat = require('./models/treats.js');
 const session = require('express-session');
+
 //PORT 
 require('dotenv').config();
 //SESSION
 const SESSION_SECRET = process.env.SESSION_SECRET
 console.log(`Here is my session secret`)
 console.log(SESSION_SECRET)
+
 app.use(session({
     secret: SESSION_SECRET,
     resave: false, //https://www.npmjs.com/package/express-session#resave
     saveUninitialized: false,
-}))
+}));
+
 //CONTROLLER
 const novasClosetController = require('./controllers/novascloset.js');
 const usersController = require('./controllers/users.js');

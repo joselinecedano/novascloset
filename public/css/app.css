@@ -33,10 +33,16 @@ body{
     border-radius: 15px;
     font-family: 'Yeseva One', cursive;
     font-size: 25px;
+    
 }
 img{
     margin-top: 5px;
     border-radius: 20px;
+   
+}
+.novaHome{
+    max-width: 250px;
+    max-height: 250px;
 }
 ul{
     display: flex;
@@ -70,6 +76,7 @@ h2{
     margin-right: 350px;
     font-size: 30px;
 }
+
 .submitBtns{
     font-family: 'Yeseva One', cursive;
     border-radius: 10px;

@@ -15,6 +15,7 @@ const authRequired = (req, res, next)=>{
         if(req.session.currentUser){
             res.send('You do not have access to this page')
         }else{
+            //or if a user is not logged in redirect them
           res.redirect('/users/login')  
         }
     }
@@ -26,40 +27,20 @@ router.get('/', (req,res)=>{
     res.render('home.ejs')
 });
 //SEED
-router.get('/seed', (req,res)=>{
-    Treat.create([
-        {
-            title:'Pumpkin and Peanut Butter Treats',
-            img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKH3oDwH2PgIrYJmSyiYeg8YtRI5eMcArzVg&usqp=CAU',
-            description:'natural homemade oumpking and peanut butter dog treats',
-            price: 24,
-            qty: 10,
-        },
-        {
-            title: 'Watermelon Treats',
-            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeKV-PGc4U-MV15DgkGCPTw47GTal7DE_DAEqeV_ObwAZZ0zEWLJ9wU77c5yarz7OZ2v0&usqp=CAU',
-            description: 'frozen watermelon dog treats',
-            price: 19,
-            qty: 16,
-        },
-        {
-            title: 'Strawberry Treats',
-            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJSK-udRBycfMSjolRkRvHVbSpXXuITZDvrQ&usqp=CAU',
-            description: 'frozen strawberry dog treats',
-            price: 17,
-            qty: 4,
-        },
-        {
-            title: 'Waffle Treats',
-            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpZ8hGN6Hh2EmQBM-tsGxEFdYjv7vfVvJOHQ&usqp=CAU',
-            description: 'cute waffle shaped dog friendly treats',
-            price: 15,
-            qty: 40,
-        },
-    ], (err, data)=>{
-        res.redirect('/novascloset')
-    });
-});
+// router.get('/seed', (req,res)=>{
+//     Costume.create([
+//         {
+//             title:'Spiderman Costume',
+//             img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwohy9dKdmGF-v52WsrgeI-q7THzJhXYtiLQ&usqp=CAU',
+//             description:'Awesome Spiderman Dog Costume',
+//             price: 24,
+//             qty: 4,
+//         },
+        
+//     ], (err, data)=>{
+//         res.redirect('/novascloset')
+//     });
+// });
 
 //INDEX
 router.get('/bandanas', (req,res)=>{
@@ -190,6 +171,7 @@ router.put('/bandanas/:id/buy', (req,res)=>{
                     res.send(err);
                 }else{
                     console.log(boughtBandana);
+                    console.log(boughtBandana.qty)
                     res.redirect('/novascloset/bandanas');
                 }
             });
