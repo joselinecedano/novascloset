@@ -1,5 +1,8 @@
 {
   "name": "novascloset",
+  "engines":{
+    "node": "18.12.1"
+  },
   "version": "1.0.0",
   "description": "A pet store website built using Node.js, Mongoose, Express, and EJS.",
   "main": "server.js",
@@ -12,7 +15,7 @@
     "url": "git+https://github.com/joselinecedano/novascloset.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Joseline Cedano",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/joselinecedano/novascloset/issues"

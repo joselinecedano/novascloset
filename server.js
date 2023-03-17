@@ -27,8 +27,11 @@ app.use(session({
 const novasClosetController = require('./controllers/novascloset.js');
 const usersController = require('./controllers/users.js');
 
+//DATABASE
+const MONGODB_URI = process.env.MONGODB_URI;
+
 //DATABASE CONNECTION (MONGO DB CONNECTION)
-mongoose.connect(process.env.DATABASE_URL, {
+mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     //gets rid of deprecation warnings
@@ -54,7 +57,7 @@ app.use('/users', usersController);
     //MUST BE AFTER ALL OTHER MIDDLEWARE
 
 //LISTENER
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 3003;
 app.listen(PORT, ()=>{
     console.log(`Novascoot's Closet: Listening on port ${PORT}!!`);
 });
