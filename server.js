@@ -10,6 +10,7 @@ const session = require('express-session');
 
 //PORT 
 require('dotenv').config();
+
 //SESSION
 mongoose.set('strictQuery', true);
 const SESSION_SECRET = process.env.SESSION_SECRET;
